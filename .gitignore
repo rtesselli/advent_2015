@@ -115,6 +115,10 @@ pkgs/
 /compiler/compiler/
 
 # Haskell Section
+haskell/*
+!haskell/**/
+!haskell/*.*
+
 dist
 dist-*
 cabal-dev
