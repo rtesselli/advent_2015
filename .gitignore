@@ -1,8 +1,8 @@
 # Nim Section
 
-*
-!**/
-!*.*
+nim/*
+!nim/**/
+!nim/*.*
 
 # Cache
 nimcache*/
@@ -139,3 +139,6 @@ cabal.project.local
 cabal.project.local~
 .HTF/
 .ghc.environment.*
+
+# My Section
+data/
