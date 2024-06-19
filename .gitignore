@@ -1,6 +1,6 @@
 # My Section
 
-data/
+data/*.txt
 
 # Nim Section
 
