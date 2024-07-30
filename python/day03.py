@@ -6,19 +6,29 @@ def read_moves():
     return Path('../data/day03.txt').read_text()
 
 
+def displacement(move: str) -> tuple[int, int]:
+    match move:
+        case '^':
+            return 0, 1
+        case 'v':
+            return 0, -1
+        case '>':
+            return 1, 0
+        case '<':
+            return -1, 0
+
+
+def add(pair1: tuple[int, int], pair2: tuple[int, int]) -> tuple[int, int]:
+    x1, y1 = pair1
+    x2, y2 = pair2
+    return x1 + x2, y1 + y2
+
+
 def visited_homes(moves: str) -> set[tuple[int, int]]:
     x, y = 0, 0
     visited = {(x, y)}
     for move in moves:
-        match move:
-            case '^':
-                y += 1
-            case 'v':
-                y -= 1
-            case '>':
-                x += 1
-            case '<':
-                x -= 1
+        x, y = add((x, y), displacement(move))
         visited.add((x, y))
     return visited
 
@@ -28,25 +38,9 @@ def visited_homes2(moves: str) -> set[tuple[int, int]]:
     x2, y2 = 0, 0
     visited = {(x1, y1)}
     for first, second in chunked(moves, 2):
-        match first:
-            case '^':
-                y1 += 1
-            case 'v':
-                y1 -= 1
-            case '>':
-                x1 += 1
-            case '<':
-                x1 -= 1
+        (x1, y1) = add((x1, y1), displacement(first))
         visited.add((x1, y1))
-        match second:
-            case '^':
-                y2 += 1
-            case 'v':
-                y2 -= 1
-            case '>':
-                x2 += 1
-            case '<':
-                x2 -= 1
+        (x2, y2) = add((x2, y2), displacement(second))
         visited.add((x2, y2))
     return visited
 
