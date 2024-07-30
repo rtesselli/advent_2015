@@ -1,6 +1,7 @@
 from pathlib import Path
 from more_itertools import chunked
 
+
 def read_moves():
     return Path('../data/day03.txt').read_text()
 
@@ -52,8 +53,7 @@ def visited_homes2(moves: str) -> set[tuple[int, int]]:
 
 def main():
     moves = read_moves()
-    coordinates = visited_homes(moves)
-    print(len(coordinates))
+    print(len(visited_homes(moves)))
     print(len(visited_homes2(moves)))
 
 
