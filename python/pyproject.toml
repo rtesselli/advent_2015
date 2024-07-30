@@ -8,6 +8,7 @@ packages = [{include = "advent_2015"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
+more-itertools = "^10.3.0"
 
 
 [build-system]
