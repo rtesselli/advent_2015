@@ -41,5 +41,22 @@ def transform(commands: list[Command]) -> np.ndarray:
     return matrix
 
 
+def transform2(commands: list[Command]) -> np.ndarray:
+    matrix = np.zeros((1000, 1000), dtype=int)
+    for command in commands:
+        x_slice = slice(command.start_coordinate[0], command.end_coordinate[0] + 1)
+        y_slice = slice(command.start_coordinate[1], command.end_coordinate[1] + 1)
+        match command.action:
+            case "turn off":
+                matrix[x_slice, y_slice] -= 1
+                matrix[matrix < 0] = 0
+            case "turn on":
+                matrix[x_slice, y_slice] += 1
+            case "toggle":
+                matrix[x_slice, y_slice] += 2
+    return matrix
+
+
 if __name__ == '__main__':
     print(np.sum(transform(load_commands())))
+    print(np.sum(transform2(load_commands())))
