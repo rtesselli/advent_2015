@@ -1,17 +1,29 @@
-[tool.poetry]
+[project]
 name = "advent-2015"
 version = "0.1.0"
 description = ""
-authors = ["Riccardo Tesselli <riccardo.tesselli@gmail.com>"]
+authors = [{ name = "Riccardo Tesselli", email = "riccardo.tesselli@gmail.com" }]
+requires-python = ">=3.11,<4"
 readme = "README.md"
-packages = [{include = "advent_2015"}]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+]
+dependencies = [
+    "more-itertools>=10.3.0,<11",
+    "numpy>=2.0.1,<3",
+]
 
-[tool.poetry.dependencies]
-python = "^3.11"
-more-itertools = "^10.3.0"
-numpy = "^2.0.1"
+[tool.uv]
 
+[tool.uv.build-backend]
+module-name = ["advent_2015"]
+module-root = ""
+namespace = true
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["uv_build>=0.9.22,<0.10.0"]
+build-backend = "uv_build"
