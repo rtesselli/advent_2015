@@ -71,3 +71,6 @@ if __name__ == '__main__':
     commands = load_commands()
     values = compute(commands)
     print(values["a"])
+    commands["b"] = str(values["a"])
+    values = compute(commands)
+    print(values["a"])
