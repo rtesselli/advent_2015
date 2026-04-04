@@ -1,7 +1,7 @@
 import networkx as nx
 from pathlib import Path
 from itertools import permutations, pairwise
-from typing import Sequence
+from typing import Sequence, Callable
 
 
 def load_graph() -> nx.Graph:
@@ -21,11 +21,11 @@ def get_distance(g: nx.Graph, path: Sequence[str]) -> int:
     return distance
 
 
-def get_distance_brute_force(g: nx.Graph) -> int:
-    return min(get_distance(g, path) for path in permutations(g.nodes))
+def get_distance_brute_force(g: nx.Graph, fn: Callable = min) -> int:
+    return fn(get_distance(g, path) for path in permutations(g.nodes))
 
 
 if __name__ == '__main__':
     graph = load_graph()
-    print(graph.nodes)
     print(get_distance_brute_force(graph))
+    print(get_distance_brute_force(graph, max))
