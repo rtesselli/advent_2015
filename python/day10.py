@@ -1,9 +1,9 @@
 from itertools import groupby
 
 
-def iterate(n: int) -> int:
+def iterate(n: int, iterations: int = 40) -> int:
     n = str(n)
-    for _ in range(40):
+    for _ in range(iterations):
         new_n = []
         for k, group in groupby(n):
             counts = len(list(group))
@@ -15,3 +15,4 @@ def iterate(n: int) -> int:
 
 if __name__ == '__main__':
     print(iterate(1321131112))
+    print(iterate(1321131112, iterations=50))
