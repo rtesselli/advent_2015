@@ -39,4 +39,6 @@ def next_password(password: str) -> str:
 
 
 if __name__ == '__main__':
-    print(next_password("cqjxjnds"))
+    res = next_password("cqjxjnds")
+    print(res)
+    print(next_password(step(res)))
