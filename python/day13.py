@@ -35,3 +35,8 @@ def get_best_happiness(preferences: dict) -> int:
 if __name__ == '__main__':
     links = load_preferences()
     print(get_best_happiness(links))
+    original_keys = links.keys()
+    links["Riccardo"] = {t: 0 for t in original_keys}
+    for s in original_keys:
+        links[s]["Riccardo"] = 0
+    print(get_best_happiness(links))
